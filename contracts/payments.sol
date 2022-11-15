@@ -5,24 +5,36 @@ contract Payment {
 
     address payable public passenger; //sender
     address payable public driver; //recipient
+    uint256 public expiration; //timeout
 
-    constructor(address payable _driver, uint distance) {
+    constructor(address payable _driver, uint duration) payable {
         passenger = payable(msg.sender);
         driver = _driver;
-        distance = block.timestamp + distance;
+        expiration = block.timestamp + duration;
     }
 
-    function isValidSignature(uint amount, bytes memory signature) internal view returns (bool) {
-        bytes32 message = prefixed(keccak256(abi.encodePacked(this, amount)));
-        return recoverSigner(message, signature) == passenger;
-    }
-
-    function close(uint amount, bytes memory signature) public {
+    function close(uint256 amount, bytes memory signature) external {
         require(msg.sender == driver);
         require(isValidSignature(amount, signature));
 
         driver.transfer(amount);
         selfdestruct(passenger);
+    }
+
+    function extend(uint256 newExpiration) external {
+        require(msg.sender == sender);
+        require(newExpiration > expiration);
+        expiration = newExpiration;
+    }
+
+    function claimTimeout() external {
+        require(block.timestamp >= expiration);
+        selfdestruct(sender);
+    }
+
+    function isValidSignature(uint256 amount, bytes memory signature) internal view returns (bool) {
+        bytes32 message = prefixed(keccak256(abi.encodePacked(this, amount)));
+        return recoverSigner(message, signature) == passenger;
     }
 
     function splitSignature(bytes memory sig) internal pure returns (uint8 v, bytes32 r, bytes32 s) {
@@ -48,12 +60,4 @@ contract Payment {
         return keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", hash));
     }
 
-//   function payDriver(address receiver, uint amount) public returns(bool success) {
-//         if (balances[msg.sender] < amount) return false;
-//         balances[msg.sender] -= amount;
-//         balances[receiver] += amount;
-//         emit Transfer(msg.sender, driver, amount);
-//         return true;
-//    }
-
-}
+    //referencing: https://docs.soliditylang.org/en/v0.8.17/solidity-by-example.html

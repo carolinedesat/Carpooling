@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.4;
 
+//Defining Contract 
 contract Rides {
 
     address payable public owner;
@@ -19,6 +20,7 @@ contract Rides {
 
     //Creating the passagenger structure with all the necessary details
     struct passenger {
+        //Declaring different struct elements
         string name;
         string email;
         string phoneNumber;
@@ -27,6 +29,7 @@ contract Rides {
         Users user;
     }
 
+    //Creating mapping(hash tables) for data storage
     mapping(address => passenger) public passengers;
     address payable[] public passengerKeys;
 
@@ -53,6 +56,7 @@ contract Rides {
         uint256 price;
     }
 
+    //Hash
     mapping(string => ride) public rides;
     mapping(string => bool) public existentRide;
     string[] public rideKeys;

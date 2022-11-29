@@ -345,6 +345,16 @@
 						"type": "address"
 					},
 					{
+						"internalType": "string",
+						"name": "to",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "from",
+						"type": "string"
+					},
+					{
 						"internalType": "uint256",
 						"name": "amount",
 						"type": "uint256"
@@ -382,11 +392,11 @@
 	},
 	"sources": {
 		"contracts/rides.sol": {
-			"keccak256": "0xe87923f6bca358698e9f442d9694bd2db91067be54249f4d987436e5575c554c",
+			"keccak256": "0xa360af66c0ae7355640e2e741ccf586eac210bb55531dd58860a26f6aeac5969",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://8e59b4dfbf29b3673b362297f286b513442de44dfc711319a9fbffde38182e9b",
-				"dweb:/ipfs/QmXu8ygUU4u5V6AqznkTEDpBov1Ty4QceLHTmLqG6ZHHiW"
+				"bzz-raw://e75f2f22aa2d0a05797e81a4cbeb9185a682b95e5c31d5570ba424d099df940d",
+				"dweb:/ipfs/QmekaPV4QQit4gHEexzjgGcR8msY2t9QyyPQSFEhDAvdtz"
 			]
 		}
 	},

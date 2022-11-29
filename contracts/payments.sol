@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.4;
 
+import "./rides.sol";
+
 contract Payments { //the whole code works
 
     //referencing: https://docs.soliditylang.org/en/v0.8.17/solidity-by-example.html

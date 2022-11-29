@@ -127,11 +127,19 @@
 	},
 	"sources": {
 		"contracts/payments.sol": {
-			"keccak256": "0x6539461e21933d2655ffdf67b47aec36efb18b8c4decc10ae10f2f3554b4cf71",
+			"keccak256": "0x85b1eee7c430061aff4eeae1327e09eb6589e815137b6942fefcd749958d014d",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://c8c566a92b2eb21d5222b83c3dfc51915deca13056dc3d9d98f15004d0b8b913",
-				"dweb:/ipfs/Qmf9xst61Cg7qUjVfv9vW6Z55546hQd2pUbUkmcWgRavxH"
+				"bzz-raw://0fa5cd6c3f79c6b68b2137ccdf0b243a355218ef5bd576e755d0bf2473d0eb3f",
+				"dweb:/ipfs/QmUWvJDgVaaGErWZfekqEoBKJJiwTnUH3bEc7at2eHzSpB"
+			]
+		},
+		"contracts/rides.sol": {
+			"keccak256": "0xa360af66c0ae7355640e2e741ccf586eac210bb55531dd58860a26f6aeac5969",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://e75f2f22aa2d0a05797e81a4cbeb9185a682b95e5c31d5570ba424d099df940d",
+				"dweb:/ipfs/QmekaPV4QQit4gHEexzjgGcR8msY2t9QyyPQSFEhDAvdtz"
 			]
 		}
 	},

@@ -9,11 +9,15 @@ contract Rides {
     fallback() external payable {}
     receive() external payable {}
     
+    //Creating Users Enum to define user-data types
     enum Users {
+        
+        // declaring variables type enum
         passenger,
         driver
     }
 
+    //Creating the passagenger structure with all the necessary details
     struct passenger {
         string name;
         string email;

@@ -5,9 +5,10 @@ contract Rides {
 
     //Payable addresses can receive ether
     address payable public owner;
+    address payable[] public keys;
     uint256 fee;
     
-    //Creating Users enum to define user-data types
+    //Creating Users enum to define the user's data types
     enum Users {
         
         //Declaring variables type enum
@@ -15,7 +16,15 @@ contract Rides {
         driver
     }
 
-    //Creating the passagenger structure with all the necessary details
+    //Creating DriverStatus enum to define the driver's status data types
+    enum DriverStatus {
+
+        //Declaring variables type enum
+        free,
+        busy
+    }
+
+    //Creating the passenger structure with all the necessary details
     struct passenger {
         //Declaring all necessary struct elements
         string name;
@@ -36,6 +45,7 @@ contract Rides {
         string name;
         string email;
         string phoneNumber;
+        DriverStatus status;
         address payable driverAddress;
         string[] rides;
         Users user;
@@ -124,6 +134,23 @@ contract Rides {
     //Function which updates the driver rides
     function updateDriverRides(address payable driverAddress, string memory rideId) external {
         drivers[driverAddress].rides.push(rideId);
+    }
+
+        //This function will show all the available drivers using their corresponding keys
+        function getAvailableDriversAddr() external view returns (address[] memory) {
+        uint256 j = 0;
+        for (uint256 i = 0; i < keys.length; i++)
+            if (drivers[keys[i]].status == DriverStatus(0)) j++;
+
+        address[] memory _drivers = new address[](j);
+        j = 0;
+        for (uint256 i = 0; i < keys.length; i++) {
+            if (drivers[keys[i]].status == DriverStatus(0)) {
+                _drivers[j] = keys[i];
+                j++;
+            }
+        }
+        return _drivers;
     }
 
     //This function will request a ride using attributes such as ID's, to and from locations, adresses and prices

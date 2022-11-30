@@ -74,7 +74,7 @@ contract Rides {
     string[] public rideKeys;
     uint256 rideCost;
 
-    //Constructor
+    //Constructor creation
     constructor() {
         owner = payable(msg.sender);
     }
@@ -170,6 +170,7 @@ contract Rides {
         return (rides[id]);
     }
 
+    //This function is responsible for the refund process
     function passengerPaymentRefund(address payable passengerAddress, uint256 amount) external {
         require(msg.sender == owner, "Permission denied");
         require(passengerAddress != address(0), "Permission denied");
@@ -177,10 +178,12 @@ contract Rides {
         require(success, "Request failed");
     }
 
+    //This function will run the payments so it can be confirmed
     function passengerPaymentAndConfirmation(string memory id) external payable {
         require(msg.value == rideCost + rides[id].price, "Error");
     }
 
+    //This function brings the driver confirmation to the end user
     function driverConfirmation() external payable {
         require(msg.value == rideCost, "Error");
     }

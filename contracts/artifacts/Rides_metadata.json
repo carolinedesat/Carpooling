@@ -6,6 +6,11 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -30,6 +35,13 @@
 				],
 				"name": "passengerRegistration",
 				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "driverConfirmation",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
 			},
 			{
 				"inputs": [
@@ -76,6 +88,11 @@
 						"type": "string"
 					},
 					{
+						"internalType": "enum Rides.DriverStatus",
+						"name": "status",
+						"type": "uint8"
+					},
+					{
 						"internalType": "address payable",
 						"name": "driverAddress",
 						"type": "address"
@@ -84,6 +101,51 @@
 						"internalType": "enum Rides.Users",
 						"name": "user",
 						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "existentRide",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAvailableDriversAddr",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -115,6 +177,11 @@
 								"internalType": "string",
 								"name": "phoneNumber",
 								"type": "string"
+							},
+							{
+								"internalType": "enum Rides.DriverStatus",
+								"name": "status",
+								"type": "uint8"
 							},
 							{
 								"internalType": "address payable",
@@ -194,6 +261,99 @@
 			{
 				"inputs": [
 					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					}
+				],
+				"name": "getRideInfo",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "id",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "to",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "from",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "passengerId",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "driverId",
+								"type": "string"
+							},
+							{
+								"internalType": "address payable",
+								"name": "passengerAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "address payable",
+								"name": "driverAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Rides.ride",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "keys",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
@@ -208,6 +368,37 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					}
+				],
+				"name": "passengerPaymentAndConfirmation",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "passengerAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "passengerPaymentRefund",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -308,6 +499,54 @@
 			{
 				"inputs": [
 					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "to",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "from",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "passengerId",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "driverId",
+						"type": "string"
+					},
+					{
+						"internalType": "address payable",
+						"name": "passengerAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address payable",
+						"name": "driverAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					}
+				],
+				"name": "requestRide",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
@@ -335,14 +574,9 @@
 				"name": "rides",
 				"outputs": [
 					{
-						"internalType": "address payable",
-						"name": "passengerAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "address payable",
-						"name": "driverAddress",
-						"type": "address"
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
 					},
 					{
 						"internalType": "string",
@@ -355,12 +589,68 @@
 						"type": "string"
 					},
 					{
+						"internalType": "string",
+						"name": "passengerId",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "driverId",
+						"type": "string"
+					},
+					{
+						"internalType": "address payable",
+						"name": "passengerAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address payable",
+						"name": "driverAddress",
+						"type": "address"
+					},
+					{
 						"internalType": "uint256",
-						"name": "amount",
+						"name": "price",
 						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "driverAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "rideId",
+						"type": "string"
+					}
+				],
+				"name": "updateDriverRides",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "passengerAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "rideId",
+						"type": "string"
+					}
+				],
+				"name": "updatePassengerRides",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -392,11 +682,11 @@
 	},
 	"sources": {
 		"contracts/rides.sol": {
-			"keccak256": "0xa360af66c0ae7355640e2e741ccf586eac210bb55531dd58860a26f6aeac5969",
+			"keccak256": "0x2e61cf057adb6189a23eb7767833dbb2322bc84204ec666303151a185d4e739d",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://e75f2f22aa2d0a05797e81a4cbeb9185a682b95e5c31d5570ba424d099df940d",
-				"dweb:/ipfs/QmekaPV4QQit4gHEexzjgGcR8msY2t9QyyPQSFEhDAvdtz"
+				"bzz-raw://5b620a39e6db55cf7f070cbec0743b4ddae6bca36a1875359595033dc31ed486",
+				"dweb:/ipfs/QmfFYbojcSWsbjmZbSj7duL6fBrFkJcGNcupseyJr93Hq7"
 			]
 		}
 	},

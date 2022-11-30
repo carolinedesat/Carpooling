@@ -63,8 +63,8 @@ contract Rides {
         string from;
         string passengerId;
         string driverId;
-        address payable passengerAddr;
-        address payable driverAddr;
+        address payable passengerAddress;
+        address payable driverAddress;
         uint256 price;
     }
 
